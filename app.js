@@ -16,16 +16,20 @@ if(command === 'add') {
     let note = notes.addnote(argv.title, argv.body)
     if(note) {
         console.log('Note Created');
-        console.log('-------')
-        console.log(`Title: ${note.title}`);
-        console.log(`Body: ${note.body}`);
+        notes.logNote(note)
     } else {
         console.log('Note title taken!')
     }
 } else if(command === 'list') {
     notes.getAll()
 } else if(command === 'read') {
-    notes.getNote(argv.title);
+    const note = notes.getNote(argv.title);
+    if(note) {
+        console.log('note found');
+        notes.logNote(note)
+    } else {
+        console.log('note not found')
+    }
 } else if(command === 'remove') {
    const noteRemove = notes.removeNote(argv.title)
    const message = noteRemove ? 'Note was Removed' : 'Note not found!';
