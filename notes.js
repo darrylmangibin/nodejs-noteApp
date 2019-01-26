@@ -31,7 +31,7 @@ const addnote = (title, body) => {
 }
 
 const getAll = () => {
-    
+    return fetchNotes();
 }
 
 const getNote = (title) => {
@@ -45,6 +45,7 @@ const removeNote = (title) => {
     const filteredNotes = notes.filter((note) => note.title !== title);
     saveNotes(filteredNotes);
     return notes.length !== filteredNotes.length;
+    
 }
 
 
